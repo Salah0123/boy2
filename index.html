@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>عصابة بوي — نهائي المسابقة</title>
+  <style>
+    :root{
+      --bg:#0b1020; --accent:#ff0057; --accent2:#00d4ff; --card:#0f1724;
+      --glass: rgba(255,255,255,0.04);
+      --neon: 0 0 12px rgba(255,0,87,0.25), 0 0 40px rgba(0,212,255,0.08);
+    }
+    *{box-sizing:border-box;font-family: "Segoe UI", Tahoma, Arial, "Noto Naskh Arabic", sans-serif}
+    html,body{height:100%;margin:0;background: radial-gradient(1200px 600px at 10% 10%, rgba(0,212,255,0.06), transparent), linear-gradient(180deg,#071021 0%, #0b1020 60%);color:#e6eef8}
+    .wrap{min-height:100%;display:flex;align-items:center;justify-content:center;padding:40px}
+    .stage{width:min(1100px,96%);background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border-radius:18px;padding:28px;box-shadow: 0 10px 40px rgba(2,6,23,0.6);position:relative;overflow:hidden}
+
+    /* header */
+    .header{display:flex;gap:18px;align-items:center;justify-content:space-between}
+    .title{display:flex;gap:14px;align-items:center}
+    .logo{width:84px;height:84px;border-radius:12px;background:linear-gradient(135deg,var(--accent),var(--accent2));display:flex;align-items:center;justify-content:center;font-weight:800;font-size:20px;color:white;box-shadow:var(--neon);} 
+    .htext{line-height:1}
+    .htext h1{margin:0;font-size:26px;letter-spacing:1px}
+    .htext p{margin:0;opacity:0.8}
+
+    .final-badge{background:linear-gradient(90deg,var(--accent),var(--accent2));padding:10px 16px;border-radius:999px;font-weight:700;box-shadow:var(--neon);transform:translateY(0);animation:float 3s ease-in-out infinite}
+    @keyframes float{0%{transform:translateY(0)}50%{transform:translateY(-6px)}100%{transform:translateY(0)}}
+
+    /* teams */
+    .teams{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:18px}
+    .card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:16px;border-radius:12px;display:flex;gap:12px;align-items:center;border:1px solid rgba(255,255,255,0.03)}
+    .avatar{width:72px;height:72px;border-radius:10px;background:linear-gradient(135deg,#111827, #0b1220);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:20px}
+    .team-info{flex:1}
+    .team-info h3{margin:0;font-size:18px}
+    .team-info p{margin:4px 0 0 0;opacity:0.8;font-size:14px}
+    .score{font-weight:900;font-size:28px;padding:6px 12px;border-radius:10px;background:linear-gradient(90deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));border:1px solid rgba(255,255,255,0.02)}
+
+    /* winner */
+    .winner-panel{margin-top:20px;background:linear-gradient(90deg, rgba(255,0,87,0.06), rgba(0,212,255,0.03));border-radius:14px;padding:18px;display:flex;align-items:center;gap:16px;justify-content:space-between;border:1px solid rgba(255,255,255,0.03)}
+    .winner-left{display:flex;gap:12px;align-items:center}
+    .trophy{width:84px;height:84px;border-radius:12px;background:linear-gradient(135deg,#ffd166,#ff9f1c);display:flex;align-items:center;justify-content:center;font-size:28px;font-weight:900;color:#1a0b00;box-shadow: 0 8px 40px rgba(255,160,60,0.12)}
+    .winner-text h2{margin:0;font-size:22px}
+    .winner-text p{margin:4px 0 0 0;opacity:0.85}
+
+    /* confetti */
+    .confetti{position:absolute;inset:0;pointer-events:none}
+    .confetti i{position:absolute;width:10px;height:16px;background:white;opacity:0.9;transform:rotate(20deg);border-radius:2px;animation:fall 2.8s linear infinite}
+    .confetti i:nth-child(1){left:12%;animation-delay:0s}
+    .confetti i:nth-child(2){left:28%;animation-delay:0.2s}
+    .confetti i:nth-child(3){left:42%;animation-delay:0.4s}
+    .confetti i:nth-child(4){left:62%;animation-delay:0.15s}
+    .confetti i:nth-child(5){left:78%;animation-delay:0.35s}
+    @keyframes fall{0%{transform:translateY(-10vh) rotate(0deg);opacity:1}100%{transform:translateY(120vh) rotate(360deg);opacity:0.9}}
+
+    /* responsive */
+    @media (max-width:720px){.teams{grid-template-columns:1fr}.header{flex-direction:column;align-items:flex-start}.final-badge{align-self:flex-end}}
+
+    /* small glow for handles */
+    .handle{display:inline-block;padding:6px 10px;border-radius:999px;background:rgba(0,0,0,0.35);border:1px solid rgba(255,255,255,0.03);font-weight:700}
+
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="stage">
+      <div class="header">
+        <div class="title">
+          <div class="logo">عB</div>
+          <div class="htext">
+            <h1>نهائي مسابقة <span style="color:var(--accent)">عصابة بوي</span></h1>
+            <p>10 فرق — تأهل 3 — والفائز واحد فقط!</p>
+          </div>
+        </div>
+        <div class="final-badge">المواجهة النهائية</div>
+      </div>
+
+      <div class="teams">
+        <div class="card">
+          <div class="avatar">صخ</div>
+          <div class="team-info">
+            <h3>صخور</h3>
+            <p>يمثلهم: <span class="handle">@haamddy_</span></p>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="avatar">RU</div>
+          <div class="team-info">
+            <h3>فريق روسي</h3>
+            <p>يمثلهم: <span class="handle">@mjhwwwwwl91135</span></p>
+          </div>
+        </div>
+
+
+        <div class="card">
+          <div class="avatar">BW</div>
+          <div class="team-info">
+            <h3>بلاك وايت</h3>
+            <p>يمثلهم: <span class="handle">@ahmedali20406</span></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="winner-panel">
+        <div class="winner-left">
+          <div class="trophy">🏆</div>
+          <div class="winner-text">
+            <h2>الفائز المتوقع: فريق روسي</h2>
+            <p>تهانينا الحماسية! لقطة النهائي ستكون نار 🔥</p>
+          </div>
+        </div>
+        <div style="text-align:left">
+          <div style="font-weight:800;font-size:18px">التاريخ: <span style="opacity:0.9">11 ديسمبر 2025</span></div>
+          <!-- <div style="margin-top:6px;opacity:0.85">استخدم الشاشة هذه للإعلان أو للطباعة.</div> -->
+        </div>
+      </div>
+
+      <div class="confetti" aria-hidden="true">
+        <i style="background:var(--accent);"></i>
+        <i style="background:var(--accent2);"></i>
+        <i style="background:#ffd166;"></i>
+        <i style="background:#8affc1;"></i>
+        <i style="background:#b388ff;"></i>
+      </div>
+
+    </div>
+  </div>
+</body>
+</html>
